@@ -22,42 +22,6 @@ This project is a Flask-based **Employee Management System** designed to help ad
 
 ***
 
-### How to Run the Project
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
-    cd your-repository-name
-    ```
-
-2.  **Create and activate a virtual environment:**
-
-    *For Windows:*
-    ```bash
-    python -m venv venv
-    venv\Scripts\activate
-    ```
-    *For macOS/Linux:*
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
-
-3.  **Install the required packages:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Run the application:**
-    ```bash
-    python app.py
-    ```
-
-5.  **Access the application:**
-    Open your web browser and navigate to `http://127.0.0.1:5000`.
-
-***
-
 ### How to Use
 
 On the first run, a default admin account is automatically created. Use the following credentials to log in:
