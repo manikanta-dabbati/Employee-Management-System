@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>Dashboard</h2>
+  <p>Total employees: <strong>{{ total_employees }}</strong></p>
+  <div style="margin-top:16px;">
+    <a class="btn btn-primary" href="{{ url_for('new_employee') }}">+ Add Employee</a>
+    <a class="btn btn-ghost" href="{{ url_for('employees') }}">View Employees</a>
+  </div>
+</div>
+{% endblock %}

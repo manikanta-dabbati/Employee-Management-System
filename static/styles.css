@@ -1,0 +1,106 @@
+:root {
+  --bg: #1f0f3a;
+  --card: #27204a;
+  --accent-start: #5066f0;
+  --accent-end: #4cc0ff;
+  --white: #ffffff;
+  --muted: #cfcfe6;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(180deg, var(--bg), #160925);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 24px;
+}
+
+/* Nav */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.brand {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.3px;
+}
+.nav-actions a { color: var(--muted); margin-left: 12px; text-decoration: none; font-size: 14px; }
+
+/* Card */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 600;
+  border: 0;
+  cursor: pointer;
+  font-family: "Poppins", Arial, sans-serif;
+}
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+}
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--muted);
+}
+
+/* Form */
+.form-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.form-row .field { flex: 1 1 220px; display: flex; flex-direction: column; margin-bottom: 10px; }
+label { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: transparent;
+  color: var(--white);
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+.table th, .table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  font-size: 14px;
+  color: var(--muted);
+}
+.table th { color: var(--white); font-weight: 700; font-size: 13px; }
+
+/* Center text */
+.center { text-align: center; }
+
+/* Responsive */
+@media (max-width: 720px) {
+  .form-row { flex-direction: column; }
+  .nav-actions { display: none; }
+}

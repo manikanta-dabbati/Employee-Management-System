@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ action }} Employee{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>{{ action }} Employee</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-row">
+      <div class="field"><label>First Name</label>{{ form.first_name() }}</div>
+      <div class="field"><label>Last Name</label>{{ form.last_name() }}</div>
+    </div>
+
+    <div class="form-row">
+      <div class="field"><label>Email</label>{{ form.email() }}</div>
+      <div class="field"><label>Phone</label>{{ form.phone() }}</div>
+    </div>
+
+    <div class="form-row">
+      <div class="field"><label>Position</label>{{ form.position() }}</div>
+      <div class="field"><label>Department</label>{{ form.department() }}</div>
+    </div>
+
+    <div class="form-row">
+      <div class="field"><label>Salary</label>{{ form.salary() }}</div>
+    </div>
+
+    <div style="margin-top:12px;">
+      {{ form.submit(class_="btn btn-primary") }}
+      <a class="btn btn-ghost" href="{{ url_for('employees') }}">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

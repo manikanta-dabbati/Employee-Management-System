@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Register User{% endblock %}
+{% block content %}
+<div class="card" align="center">
+  <h2>Create New User</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-row">
+      <div class="field">
+        <label>Username</label>
+        {{ form.username() }}
+      </div>
+      <div class="field">
+        <label>Password</label>
+        {{ form.password() }}
+      </div>
+      <div class="field">
+        <label>Confirm Password</label>
+        {{ form.confirm() }}
+      </div>
+    </div>
+    <div style="margin-top:12px;">
+      {{ form.submit(class_="btn btn-primary") }}
+    </div>
+  </form>
+</div>
+{% endblock %}

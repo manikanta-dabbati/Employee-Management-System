@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}Employee Management{% endblock %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="brand">Employee Management</div>
+      <div class="nav-actions">
+        {% if current_user.is_authenticated %}
+          <span style="color:rgba(255,255,255,0.8)">Hi, {{ current_user.username }}</span>
+          <a class="btn btn-ghost" href="{{ url_for('dashboard') }}">Dashboard</a>
+          <a class="btn btn-ghost" href="{{ url_for('employees') }}">Employees</a>
+          {% if current_user.is_admin %}
+            <a class="btn btn-ghost" href="{{ url_for('register') }}">Create User</a>
+          {% endif %}
+          <a class="btn btn-ghost" href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+          <a class="btn btn-ghost" href="{{ url_for('login') }}">Login</a>
+        {% endif %}
+      </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div style="margin-bottom:12px">
+          {% for category, msg in messages %}
+            <div class="card" style="padding:12px; margin-bottom:8px;">
+              <strong>{{ msg }}</strong>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

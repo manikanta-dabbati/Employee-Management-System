@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Employees{% endblock %}
+{% block content %}
+<div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px;">
+  <h2>Employees</h2>
+  <div>
+    <form method="GET" style="display:flex; gap:8px; align-items:center;">
+      <input type="text" name="q" placeholder="Search by name or email" value="{{ q or '' }}" style="padding:8px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:var(--white)">
+      <button class="btn btn-ghost" type="submit">Search</button>
+      <a class="btn btn-primary" href="{{ url_for('new_employee') }}">+ Add</a>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Position</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for emp in employees.items %}
+        <tr>
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.first_name }} {{ emp.last_name }}</td>
+          <td>{{ emp.email }}</td>
+          <td>{{ emp.position or '-' }}</td>
+          <td>{{ emp.department or '-' }}</td>
+          <td>{{ '${:,.2f}'.format(emp.salary) if emp.salary is not none else '-' }}</td>
+          <td>
+            <a class="btn btn-ghost" href="{{ url_for('edit_employee', emp_id=emp.id) }}">Edit</a>
+            <a class="btn btn-ghost" href="{{ url_for('delete_employee', emp_id=emp.id) }}">Delete</a>
+          </td>
+        </tr>
+      {% else %}
+        <tr><td colspan="7" class="center">No employees found.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div style="margin-top:12px; display:flex; gap:8px; align-items:center; justify-content:center;">
+    {% if employees.has_prev %}
+      <a class="btn btn-ghost" href="{{ url_for('employees', page=employees.prev_num, q=q) }}">Prev</a>
+    {% endif %}
+    <span style="color:var(--muted)">Page {{ employees.page }} / {{ employees.pages }}</span>
+    {% if employees.has_next %}
+      <a class="btn btn-ghost" href="{{ url_for('employees', page=employees.next_num, q=q) }}">Next</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
